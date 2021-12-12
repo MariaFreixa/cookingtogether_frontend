@@ -8,10 +8,13 @@ import { HttpClient } from '@angular/common/http';
 
 export class CategoryService {
 
+  private urlHeroku: string = "https://cookingtogether01.herokuapp.com/api/auth/";
+  private urllocalhost: string = "http://127.0.0.1:8000/api/auth/";
+
   constructor(private http: HttpClient) { }
 
   getAllCategories(): Observable<any> {
-    return this.http.get('https://cookingtogether01.herokuapp.com/api/auth/categories');
+    return this.http.get(this.urllocalhost + 'categories');
   }
 }
 

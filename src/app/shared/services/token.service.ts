@@ -6,9 +6,12 @@ import { Injectable } from '@angular/core';
 
 export class TokenService {
 
+  private urlHeroku: string = "https://cookingtogether01.herokuapp.com/api/auth/";
+  private urllocalhost: string = "http://127.0.0.1:8000/api/auth/";
+
   private issuer = {
-    login: 'https://cookingtogether01.herokuapp.com/api/auth/login',
-    register: 'https://cookingtogether01.herokuapp.com/api/auth/register'
+    login: this.urllocalhost + 'login',
+    register: this.urllocalhost + 'register'
   }
 
   constructor() { }

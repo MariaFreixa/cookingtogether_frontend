@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { Category } from 'src/app/shared/models/category.model';
+import { Complexity } from 'src/app/shared/models/complexity.model';
 import { Recipe } from 'src/app/shared/models/recipe.model';
 import { AuthStateService } from 'src/app/shared/services/auth-state.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
@@ -34,12 +36,23 @@ export class CategoriaComponent implements OnInit {
     this.subscription = this.route.params.subscribe(params => {
       this.recipeService.getRecipesByCategory(params['id']).subscribe((recipes) => {
         this.recipes = recipes;
-        recipes.forEach(element => {
-          let objectURL = 'data:image/jpeg;base64,' + element.main_image;
-          element.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-          this.recipeService.getRatings(element.id).subscribe((rating) => {
-            element.rating = rating;
+        recipes.forEach(recipe => {
+          let objectURL = 'data:image/jpeg;base64,' + recipe.main_image;
+          recipe.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+          this.recipeService.getRatings(recipe.id).subscribe((rating) => {
+            recipe.rating = rating;
           })
+          this.categoryService.getAllCategories().subscribe((response: Category[]) => {
+            response.forEach(category => {
+              if(category.id == recipe.id_category) recipe.category = category.category;
+            });
+          });
+      
+          this.complexityService.getAllComplexity().subscribe((response: Complexity[]) => {
+            response.forEach(complexity => {
+              if(complexity.id == recipe.id_complexity) recipe.complexity = complexity.complexity;
+            });
+          });
         });
         this.recipes = recipes;
       });

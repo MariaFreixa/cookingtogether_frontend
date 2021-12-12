@@ -1,0 +1,85 @@
+.searchContainer {
+    width: 50%;
+    margin: 0px auto;
+}
+
+.custom-form {
+    min-width: 100px;
+    margin: 0px auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4rem 4rem;
+    border-radius: 2.5rem;
+    background-color: #FFAA7A;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+    color: black;
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+}
+
+.row {
+    justify-content: center;
+}
+
+.custom-form button {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: none;
+    font-size: 0.875rem;
+    color: black;
+    font-weight: bold;
+    background-color: #FFAA7A;
+    width: 100%;
+    padding: 1rem 1rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+}
+
+.recetas {
+    display: flex;
+    justify-content: center;
+}
+
+mat-card {
+    margin: 5px;
+    border-radius: 2rem;
+    background-color: #FFAA7A;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+}
+
+mat-card-header {
+    justify-content: center;
+  }
+
+mat-card img {
+    height: 250px;
+    width: 300px;
+    margin: 10px 10px 10px;
+    border-radius: 0.5rem;
+}
+
+mat-card-actions {
+    display: inline;
+}
+
+.fa-heart {
+    color: red;
+    text-align: left;
+    margin-left: 15px;
+}
+
+ngb-rating {
+    color: black;
+    font-size: 40px;
+    text-align: right;
+    margin-left: 120px;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        margin: 0 auto;
+      }
+    .custom-form {
+        min-width: 325px;
+        padding: 3rem 3rem;
+    }
+}
