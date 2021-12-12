@@ -1,0 +1,43 @@
+.recetas {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    margin-top: 80px;
+}
+
+mat-card {
+    margin: 5px;
+    border-radius: 2rem;
+    background-color: #FFAA7A;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+}
+
+mat-card-header {
+    justify-content: center;
+  }
+
+mat-card img {
+    height: 250px;
+    width: 300px;
+    margin: 10px 10px 10px;
+    border-radius: 0.5rem;
+}
+
+mat-card-actions {
+    display: inline;
+}
+
+.fa-heart {
+    color: red;
+    text-align: right;
+}
+
+ngb-rating {
+    color: black;
+    font-size: 40px;
+    text-align: right;
+    margin-left: 120px;
+}

@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="container">
+    <form class="custom-form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()" *ngIf='recipeForm'>
+        <h3 class="h3 mb-3 font-weight-normal text-center">{{title}}</h3>
+  
+         <!-- Errors -->
+        <div *ngIf="errors?.name" class="alert alert-danger mt-3">
+          {{ errors?.name }}
+        </div>
+        <div *ngIf="errors?.main_image" class="alert alert-danger mt-3">
+          {{ errors?.main_image }}
+        </div>
+        <div *ngIf="errors?.diners" class="alert alert-danger mt-3">
+            {{ errors?.diners }}
+        </div>
+        <div *ngIf="errors?.video" class="alert alert-danger mt-3">
+            {{ errors?.video }}
+        </div>
+        <div *ngIf="errors?.id_category" class="alert alert-danger mt-3">
+            {{ errors?.id_category }}
+        </div>
+        <div *ngIf="errors?.id_complexity" class="alert alert-danger mt-3">
+            {{ errors?.id_complexity }}
+        </div>
+        <div *ngIf="errors?.ingredients" class="alert alert-danger mt-3">
+            {{ errors?.ingredients }}
+        </div>
+        <div *ngIf="errors?.steps" class="alert alert-danger mt-3">
+            {{ errors?.steps }}
+        </div>
+  
+        <!-- Registro -->
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="name" placeholder="Nombre de la receta">
+        </div>
+        <div class="form-group">
+            <input type='file' class="form-control" id="main_image" name="main_image" (change)="onImageChange($event)">
+          </div>
+        <div class="form-group">
+            <input type="number" class="form-control" formControlName="diners" placeholder="Comensales" min=1 max=12>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" formControlName="video" placeholder="Enlace al video">
+        </div>
+        <div class="form-group">
+            <select class="form-control" formControlName="id_category">
+                <option hidden value="" disabled selected>Selecciona la categoría</option>
+                <option *ngFor="let element of categories" [value]="element.id">{{element.category}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select class="form-control" formControlName="id_complexity">
+                <option hidden value="" disabled selected>Selecciona la dificultad</option>
+                <option *ngFor="let element of complexity" [value]="element.id">{{element.complexity}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="formulario" formArrayName="ingredients">
+                <div *ngFor="let ingredientCtrl of recipeForm.get('ingredients')?.controls; let i = index" [formGroupName]="i">
+                    <input type="text" class="form-control" formControlName="ingredient"  placeholder="Ingrediente">
+                    <button mat-fab type="button" (click)="onDeleteIngredient(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <button type="button" (click)="onAddIngredient()">Añadir ingrediente</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="formulario" formArrayName="steps">
+                <div *ngFor="let stepsCtrl of recipeForm.get('steps')?.controls; let i = index" [formGroupName]="i">
+                    <textarea class="form-control" formControlName="step" placeholder="Describe el paso {{i}}"></textarea>
+                    <button mat-fab type="button" (click)="onDeleteStep(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <button type="button" (click)="onAddStep()">Añadir paso
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button class="btn" type="submit" [disabled]="disabledSubmit">{{subButton}}</button>
+    </form>
+</div>
+<app-footer></app-footer>

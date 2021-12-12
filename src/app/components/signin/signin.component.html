@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container">
+    <form class="custom-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h3 class="h3 mb-3 font-weight-normal text-center">Login</h3>
+
+        <!-- Errors -->
+        <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+            {{ errors?.email }}
+        </div>
+        <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+            {{ errors?.password }}
+        </div>
+        <div *ngIf="errors?.error" class="alert alert-danger mt-3">
+            {{ errors?.error }}
+        </div>
+
+      <!-- Login -->
+      <div>
+        <div class="form-group">
+            <input type="email" class="form-control" formControlName="email" placeholder="ejemplo@ejemplo.com">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+        </div>
+        <button type="submit" class="btn btn-block btn-primary">Login</button>
+    </div>
+  </form>
+</div>
+<app-footer></app-footer>

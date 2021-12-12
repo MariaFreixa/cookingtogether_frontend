@@ -1,0 +1,62 @@
+.custom-form {
+    min-width: 500px;
+    margin: 0px auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4rem 4rem;
+    margin: auto;
+    border-radius: 2.5rem;
+    background-color: #FFAA7A;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+    color: black;
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+}
+
+button {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: bold;
+    background-color: #FFAA7A;
+    width: 100%;
+    padding: 1rem 1rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 0.1rem solid grey;
+    background-color: #FFAA7A;
+}
+
+button:focus {
+    border: 0.1rem solid grey;
+    background-color: #FFAA7A;
+}
+
+button:active {
+    border: 0.1rem solid grey;
+    background-color: #FFAA7A;
+}
+
+.avatar {
+    display: block;
+    margin: 0 auto;
+    width: 12.5rem;
+    height: 12.5rem;
+    border-radius: 9.375rem;
+    border: 0.625rem solid #FFAA7A;
+    
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        margin: 0 auto;
+      }
+    .custom-form {
+        min-width: 325px;
+        padding: 3rem 3rem;
+    }
+}
+

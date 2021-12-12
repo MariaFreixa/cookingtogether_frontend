@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div class="container">
+  <form class="custom-form" [formGroup]="updateUserForm" (ngSubmit)="onSubmit()" *ngIf="updateUserForm">
+    <h3 class="h3 mb-3 font-weight-normal text-center">Mi perfil</h3>
+
+    <!-- Errors -->
+    <div *ngIf="errors?.name" class="alert alert-danger mt-3">
+      {{ errors?.name }}
+    </div>
+    <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+      {{ errors?.email }}
+    </div>
+    <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+        {{ errors?.password }}
+    </div>
+    <div *ngIf="errors?.password_confirmation" class="alert alert-danger mt-3">
+        {{ errors?.password_confirmation }}
+    </div>
+
+    <!-- Registro -->
+    <div>
+      <img class="avatar" id="avatar" [src]='thumbnail' alt="Avatar" />
+      <div class="form-group">
+        <input class="form-control" type='file' id="avatar" name="avatar" (change)="onAvatarChange($event)">
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="name" placeholder="Tu nombre">
+    </div>
+    <div class="form-group">
+        <input type="email" class="form-control" formControlName="email" placeholder="ejemplo@ejemplo.com" >
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" formControlName="password_confirmation" placeholder="Repetir contraseña">
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">Actualizar perfil</button>
+  </form>
+</div>
+<app-footer></app-footer>

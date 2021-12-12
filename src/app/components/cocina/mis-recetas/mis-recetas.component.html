@@ -1,0 +1,76 @@
+<h1 class="title">MIS RECETAS</h1>
+<div class="container">
+  <table class="table" *ngIf='misRecetas'>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of misRecetas | slice: (pageMisRecetas-1) * pageSize : pageMisRecetas * pageSizeMisRecetas; index as i">
+      <th scope="row">{{ (pageMisRecetas -1) * pageSizeMisRecetas + i + 1 }}</th>
+      <td>{{item.name}}</td>
+      <td class="acciones">
+        <i class="fas fa-edit" routerLink="/editar-receta/{{item.id}}"></i>
+        <i class="far fa-trash-alt" (click)="openModal(content, item)"></i>
+      </td>
+    </tbody>
+  </table>
+  <ngb-pagination [collectionSize]="collectionSizeMisRecetas" [(page)]="pageMisRecetas" [maxSize]="5" [boundaryLinks]="true"
+    [pageSize]="pageSizeMisRecetas" class="d-flex justify-content-center">
+  </ngb-pagination>
+  <button color="primary" routerLink="/crear-receta/">Añadir nueva receta</button>
+</div>
+
+
+<h1 class="title">MIS RECETAS FAVORITAS</h1>
+<div class="container">
+  <table class="table" *ngIf='misRecetasFavoritas'>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of misRecetasFavoritas | slice: (pageMisRecetasFavoritas-1) * pageSize : pageMisRecetasFavoritas * pageSizeMisRecetasFavoritas; index as i">
+      <th scope="row">{{ (pageMisRecetasFavoritas -1) * pageSizeMisRecetasFavoritas + i + 1 }}</th>
+      <td>{{item.name}}</td>
+      <td class="acciones">
+        <i class="far fa-trash-alt" (click)="openModal(contentFavorites, item)"></i>
+      </td>
+    </tbody>
+  </table>
+  <ngb-pagination [collectionSize]="collectionSizeMisRecetasFavoritas" [(page)]="pageMisRecetasFavoritas" [maxSize]="5" [boundaryLinks]="true"
+    [pageSize]="pageSizeMisRecetasFavoritas" class="d-flex justify-content-center">
+  </ngb-pagination>
+</div>
+
+<ng-template id="ModalRecetaFavoritos" #contentFavorites let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Eliminar receta de favoritos</h4>
+  </div>
+  <div class="modal-body">
+    <p>¿Estás seguro que quieres eliminar la receta {{nombreReceta}} de tus favoritos?&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="eliminarFavoritos()">Eliminar</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancelar</button>
+  </div>
+</ng-template>
+
+<ng-template id="modalReceta" #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Eliminar receta</h4>
+  </div>
+  <div class="modal-body">
+    <p>¿Estás seguro que quieres eliminar la receta: {{nombreReceta}}?&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="eliminarReceta()">Eliminar</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancelar</button>
+  </div>
+</ng-template>
