@@ -11,7 +11,7 @@
     <tbody>
       <tr *ngFor="let item of misRecetas | slice: (pageMisRecetas-1) * pageSize : pageMisRecetas * pageSizeMisRecetas; index as i">
       <th scope="row">{{ (pageMisRecetas -1) * pageSizeMisRecetas + i + 1 }}</th>
-      <td>{{item.name}}</td>
+      <td class="link" routerLink="/receta/{{item.id}}">{{item.name}}</td>
       <td class="acciones">
         <i class="fas fa-edit" routerLink="/editar-receta/{{item.id}}"></i>
         <i class="far fa-trash-alt" (click)="openModal(content, item)"></i>
@@ -21,7 +21,11 @@
   <ngb-pagination [collectionSize]="collectionSizeMisRecetas" [(page)]="pageMisRecetas" [maxSize]="5" [boundaryLinks]="true"
     [pageSize]="pageSizeMisRecetas" class="d-flex justify-content-center">
   </ngb-pagination>
-  <button color="primary" routerLink="/crear-receta/">Añadir nueva receta</button>
+  <button class="button" routerLink="/crear-receta/">
+    Añadir nueva receta
+    <div class="button__horizontal"></div>
+    <div class="button__vertical"></div>
+  </button>
 </div>
 
 
@@ -38,7 +42,7 @@
     <tbody>
       <tr *ngFor="let item of misRecetasFavoritas | slice: (pageMisRecetasFavoritas-1) * pageSize : pageMisRecetasFavoritas * pageSizeMisRecetasFavoritas; index as i">
       <th scope="row">{{ (pageMisRecetasFavoritas -1) * pageSizeMisRecetasFavoritas + i + 1 }}</th>
-      <td>{{item.name}}</td>
+      <td class="link" routerLink="/receta/{{item.id}}">{{item.name}}</td>
       <td class="acciones">
         <i class="far fa-trash-alt" (click)="openModal(contentFavorites, item)"></i>
       </td>

@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="container">
     <form class="custom-form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()" *ngIf='recipeForm'>
         <h3 class="h3 mb-3 font-weight-normal text-center">{{title}}</h3>
@@ -84,4 +83,3 @@
         <button class="btn" type="submit" [disabled]="disabledSubmit">{{subButton}}</button>
     </form>
 </div>
-<app-footer></app-footer>

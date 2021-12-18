@@ -10,14 +10,14 @@ export class TokenService {
   private urllocalhost: string = "http://127.0.0.1:8000/api/auth/";
 
   private issuer = {
-    login: this.urllocalhost + 'login',
-    register: this.urllocalhost + 'register'
+    login: this.urlHeroku + 'login',
+    register: this.urlHeroku + 'register'
   }
 
   constructor() { }
 
   handleData(data){
-    console.log(data);
+    console.log("dentro de handleData: ", data);
     localStorage.setItem('auth_token', data.access_token);
     localStorage.setItem('user', JSON.stringify(data.user));
   }

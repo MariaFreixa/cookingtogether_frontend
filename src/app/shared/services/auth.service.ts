@@ -16,28 +16,28 @@ export class AuthService {
 
   // Registro
   register(user: User): Observable<any> {
-    return this.http.post(this.urllocalhost + 'register', user);
+    return this.http.post(this.urlHeroku + 'register', user);
   }
 
   // Login
   signin(user: User): Observable<any> {
-    return this.http.post<any>(this.urllocalhost + 'login', user);
+    return this.http.post<any>(this.urlHeroku + 'login', user);
   }
 
   // recuperamos la informacion del perfil de usuario
   profileUser(): Observable<any> {
 
-    return this.http.get(this.urllocalhost + 'user-profile');
+    return this.http.get(this.urlHeroku + 'user-profile');
   }
 
   // recuperamos la informacion del perfil de usuario
   updateProfileUser(user: any): Observable<any> {
-    return this.http.post(this.urllocalhost + 'update-user-profile', user);
+    return this.http.post(this.urlHeroku + 'update-user-profile', user);
   }
 
   // recuperamos la imagen avatar del usuario
   getAvatar(id: number): Observable<any> {
-    return this.http.get(this.urllocalhost + 'getAvatar'+ id);
+    return this.http.get(this.urlHeroku + 'getAvatar'+ id);
   }
 }
 

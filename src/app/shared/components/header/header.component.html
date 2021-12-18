@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light fixed-top">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">CookingTogether</a>
+    <a class="navbar-brand" routerLink="/home">CookingTogether</a>
   
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -37,7 +37,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/register" *ngIf="!isSignedIn">Registrate</a>
         </li>
-        <button class="btn btn-outline-primary" (click)="signOut()" *ngIf="isSignedIn">Logout</button>
+        <button class="btn btn-outline" (click)="signOut()" *ngIf="isSignedIn">Logout</button>
       </ul>
     </div>
   </nav>

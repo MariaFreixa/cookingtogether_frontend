@@ -14,7 +14,7 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
 
   getAllCategories(): Observable<any> {
-    return this.http.get(this.urllocalhost + 'categories');
+    return this.http.get(this.urlHeroku + 'categories');
   }
 }
 

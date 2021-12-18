@@ -12,4 +12,6 @@ export class Recipe {
     complexity: Complexity;
     userFavorite: boolean;
     rating: number;
+    id_category: number;
+    id_complexity: number;
 }

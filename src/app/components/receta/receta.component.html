@@ -1,1 +1,17 @@
-<p>receta works!</p>
+<h1 class="title">{{title}}</h1>
+<section id="recipe" class="d-flex flex-row" *ngIf="receta">
+    <div class="container">
+            <a routerLink="/categoria/{{ receta.id_category }}">
+              <span>Otras recetas de {{ receta.category }}</span>
+            </a>
+          <img [src]="receta.image" alt="{{ receta.name }}" >
+          <ul>
+            <li *ngFor = "let items of recipeIngredients">
+              {{ items }}
+            </li>
+          </ul>
+              <a href="{{ receta.video }}" target="_blank" rel="noreferrer">Watch on YouTube</a>
+          <h5>{{ recipeName }}</h5>
+          <p id="recipeInstructions">{{ recipeInstructions }}</p>
+    </div>
+  </section>

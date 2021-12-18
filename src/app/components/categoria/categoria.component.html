@@ -1,22 +1,21 @@
-<app-header></app-header>
-
 <div class="recetas">
     <mat-card class="example-card" *ngFor="let item of recipes">
         <mat-card-header>
-            <mat-card-title >{{item.name}}</mat-card-title>
+            <mat-card-title><b>{{item.name}}</b></mat-card-title>
         </mat-card-header>
         <img mat-card-image [src]="item.image" alt="Foto de la receta {{item.name}}">
         <mat-card-content>
-            <p>Comensales: {{item.diners}}</p>
-            <p>dificultad: {{item.complexity}}</p>
-            <p>Categoria: {{item.category}}</p>
+            <p><b>Comensales:</b> {{item.diners}}</p>
+            <p><b>dificultad:</b> {{item.complexity}}</p>
+            <p><b>Categoria:</b> {{item.category}}</p>
         </mat-card-content>
         <mat-card-actions *ngIf='isSignedIn'>
             <i class="far fa-heart fa-2x" *ngIf='!item.userFavorite' (click)='setFavorite($event, "fav")' id='{{item.id}}'></i>
             <i class="fas fa-heart fa-2x" *ngIf='item.userFavorite' (click)='setFavorite($event, "nofav")' id='{{item.id}}'></i>
         </mat-card-actions>
         <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]='!isSignedIn' (rateChange)="onRateChange($event, item.id)"></ngb-rating>
+        <div>
+            <a routerLink="/receta/{{item.id}}">Leer más</a>
+        </div>
     </mat-card>
 </div>
-
-<app-footer></app-footer>

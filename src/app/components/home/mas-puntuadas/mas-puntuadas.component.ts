@@ -55,6 +55,7 @@ export class MasPuntuadasComponent implements OnInit {
         });
       });
       this.recipes = recipes;
+      console.log("recipes: ", recipes);
     });
 
     if(this.isSignedIn) {

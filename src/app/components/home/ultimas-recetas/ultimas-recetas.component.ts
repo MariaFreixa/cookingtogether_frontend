@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/shared/models/category.model';
 import { Complexity } from 'src/app/shared/models/complexity.model';
 import { AuthStateService } from 'src/app/shared/services/auth-state.service';
@@ -18,7 +19,7 @@ export class UltimasRecetasComponent implements OnInit {
   public recipes: Recipe[] = [];
   public isSignedIn: boolean = false;
 
-  constructor(public recipeService: RecipeService, private sanitizer: DomSanitizer, private authStateService: AuthStateService, private token: TokenService, public categoryService: CategoryService, public complexityService: ComplexityService) {}
+  constructor(public recipeService: RecipeService, private sanitizer: DomSanitizer, private authStateService: AuthStateService, private token: TokenService, public categoryService: CategoryService, public complexityService: ComplexityService, public router: Router) {}
 
   ngOnInit(): void { 
     this.getUserAuthState();
@@ -27,6 +28,7 @@ export class UltimasRecetasComponent implements OnInit {
 
   getUserAuthState() {
     this.authStateService.userAuthState.subscribe(val => {
+      console.log("userAuthState: ", val);
       this.isSignedIn = val;
     });
   }

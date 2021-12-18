@@ -13,7 +13,11 @@ mat-card {
 
 mat-card-header {
     justify-content: center;
-  }
+}
+
+mat-card-title {
+    font-size: 30px;
+}
 
 mat-card img {
     height: 250px;
@@ -35,6 +39,13 @@ mat-card-actions {
 ngb-rating {
     color: black;
     font-size: 40px;
+    text-align: right;
+    margin-left: 120px;
+}
+
+a {
+    color: black;
+    font-size: 15px;
     text-align: right;
     margin-left: 120px;
 }

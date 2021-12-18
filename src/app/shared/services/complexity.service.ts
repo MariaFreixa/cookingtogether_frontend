@@ -13,6 +13,6 @@ export class ComplexityService {
   constructor(private http: HttpClient) {}
 
   getAllComplexity():Observable<any> {
-    return this.http.get(this.urllocalhost + `complexity`);
+    return this.http.get(this.urlHeroku + `complexity`);
   }
 }
