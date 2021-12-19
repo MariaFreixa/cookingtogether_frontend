@@ -4,7 +4,7 @@ import { Category } from './category.model';
 export class Recipe {
     id: number;
     name: string;
-    image: File;
+    image: any;
     diners: number;
     video: String;
     id_user: number;
@@ -14,4 +14,5 @@ export class Recipe {
     rating: number;
     id_category: number;
     id_complexity: number;
+    main_image: any;
 }

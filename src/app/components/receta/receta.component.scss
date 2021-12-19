@@ -1,4 +1,71 @@
 .title {
     text-align: center;
     margin-top: 80px;
+    margin-top: 80px;
+    font-family: Arial Black; 
+    font-weight: bold; font-size: 50px; 
+    background: #202020; 
+    -webkit-background-clip: text; 
+    -moz-background-clip: text; 
+    background-clip: text; 
+    color: transparent; 
+    text-shadow: 0px 3px 3px rgba(255,255,255,0.4),0px -1px 1px rgba(0,0,0,0.3);
 }
+
+.receta {
+    text-align: center;
+    width: 40%;
+    margin: 0px auto;
+}
+
+img {
+    text-align: center;
+    margin-top: 10px;
+    width: 400px;
+    border-radius: 1rem;
+}
+
+.fa-heart {
+    color: red;
+    text-align: right;
+}
+
+ngb-rating {
+    color: black;
+    font-size: 80px;
+    text-align: center;
+}
+
+span {
+    color: black;
+    font-size: 15px;
+}
+
+.ingredients {
+    margin: 0px auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 2rem;
+    border-radius: 2.5rem;
+    background-color: #FFAA7A;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+    color: black;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.steps {
+    text-align: left;
+}
+
+.comment-section {
+    display: block;
+    border-radius: 11px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 3%;
+}
+
+.name {
+    font-size: 20px
+}
+

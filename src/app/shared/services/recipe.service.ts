@@ -87,4 +87,9 @@ export class RecipeService {
   searchRecipe(filters: any):Observable<any> {
     return this.http.post(this.urlHeroku + `search-recipe`, filters);
   }
+
+  //Guardamos el comentario del usuario
+  setComment(comment: any):Observable<any> {
+    return this.http.post(this.urlHeroku + `set-comment`, comment);
+  }
 }

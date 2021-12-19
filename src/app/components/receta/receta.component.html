@@ -1,17 +1,67 @@
-<h1 class="title">{{title}}</h1>
-<section id="recipe" class="d-flex flex-row" *ngIf="receta">
-    <div class="container">
-            <a routerLink="/categoria/{{ receta.id_category }}">
-              <span>Otras recetas de {{ receta.category }}</span>
-            </a>
-          <img [src]="receta.image" alt="{{ receta.name }}" >
-          <ul>
-            <li *ngFor = "let items of recipeIngredients">
-              {{ items }}
-            </li>
-          </ul>
-              <a href="{{ receta.video }}" target="_blank" rel="noreferrer">Watch on YouTube</a>
-          <h5>{{ recipeName }}</h5>
-          <p id="recipeInstructions">{{ recipeInstructions }}</p>
+<h1 class="title" *ngIf="recipe">{{title}} 
+  <i class="far fa-heart" *ngIf='!recipe.userFavorite && isSignedIn' (click)='setFavorite($event, "fav")' id='{{recipe.id}}'></i>
+  <i class="fas fa-heart" *ngIf='recipe.userFavorite && isSignedIn' (click)='setFavorite($event, "nofav")' id='{{recipe.id}}'></i>
+</h1>
+<div class="receta" *ngIf="recipe">
+  <div>
+    <ngb-rating [max]="5" [(rate)]="recipe.rating" [readonly]='!isSignedIn' (rateChange)="onRateChange($event)"></ngb-rating>
+  </div>
+  <div>
+    <img [src]="recipe.image" alt="{{ recipe.name }}" >
+  </div>
+  <div>
+    <p><b>Comensales:</b> {{recipe.diners}}
+    <b>dificultad:</b> {{recipe.complexity}}
+    <b>Categoria:</b> {{recipe.category}}</p>
+  </div>
+  <a routerLink="/categoria/{{ recipe.id_category }}">
+    <span>--> Otras recetas de {{ recipe.category }} <--</span>
+  </a>
+  <div class="ingredients">
+    <h1>Ingredientes</h1>
+    <ul>
+      <li *ngFor="let element of ingredients">{{element.ingredient}}</li>
+    </ul>
+  </div>
+  <div class="steps">
+    <h1>Procedimiento</h1>
+    <ul>
+      <li *ngFor="let element of steps">{{element.step}}</li>
+    </ul>
+  </div>
+  <h1>Comentarios</h1>
+  <form class="custom-form" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <!-- Errors -->
+    <div *ngIf="errors?.comment" class="alert alert-danger mt-3">
+        {{ errors?.comment }}
     </div>
-  </section>
+
+    <!-- Comments -->
+    <div class="container mt-5" *ngFor="let element of comments | slice: (page-1) * pageSize : page * pageSize; index as i">
+      <div class="d-flex justify-content-center row">
+        <div class="col-md-9">
+          <div class="bg-white comment-section">
+            <div class="d-flex flex-row user p-2">
+              <span class="name font-weight-bold">{{element.user_name}}</span>
+            </div>
+            <div class="mt-2 p-2">
+              <p class="comment-content">{{element.comment}}</p>
+            </div>
+            <div>
+              <span>{{element.created_at}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"
+      [pageSize]="pageSize" class="d-flex justify-content-center">
+  </ngb-pagination>
+    <div>
+      <div class="form-group">
+        <textarea class="form-control" formControlName="comment" placeholder="Comenta"></textarea>
+      </div>
+      <button type="submit" class="btn btn-block btn-primary">Comenta</button>
+    </div>
+  </form>
+</div>
