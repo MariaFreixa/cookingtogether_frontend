@@ -12,7 +12,7 @@
     margin-bottom: 5rem;
 }
 
-button {
+.custom-form button {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     border: none;
@@ -25,17 +25,17 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.custom-form button:hover {
     border: 0.1rem solid grey;
     background-color: #FFAA7A;
 }
 
-button:focus {
+.custom-form button:focus {
     border: 0.1rem solid grey;
     background-color: #FFAA7A;
 }
 
-button:active {
+.custom-form button:active {
     border: 0.1rem solid grey;
     background-color: #FFAA7A;
 }
@@ -59,4 +59,3 @@ button:active {
         padding: 3rem 3rem;
     }
 }
-

@@ -47,3 +47,18 @@ ngb-pagination {
 	font-weight: bold;
 	box-shadow: inset 0 0 0 var(--border-size) currentcolor;
 }
+
+@media screen and (max-width: 500px) {
+    .container {
+        margin: 0 auto;
+    }
+
+    .title {
+        font-weight: bold; 
+        font-size: 35px; 
+    }
+
+    .button {
+        margin-left: 15px;
+    }
+}

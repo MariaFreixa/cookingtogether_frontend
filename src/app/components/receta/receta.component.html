@@ -35,10 +35,6 @@
   </div>
   <h1>Comentarios</h1>
   <form class="custom-form" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
-    <!-- Errors -->
-    <div *ngIf="errors?.comment" class="alert alert-danger mt-3">
-        {{ errors?.comment }}
-    </div>
 
     <!-- Comments -->
     <div class="container mt-5" *ngFor="let element of comments | slice: (page-1) * pageSize : page * pageSize; index as i">
@@ -58,10 +54,14 @@
         </div>
       </div>
     </div>
+    <!-- Errors -->
+    <div *ngIf="errors?.comment" class="alert alert-danger mt-3">
+      {{ errors?.comment }}
+    </div>
     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"
       [pageSize]="pageSize" class="d-flex justify-content-center">
-  </ngb-pagination>
-    <div *ngIf='isSignedIn'>
+    </ngb-pagination>
+    <div class="custom-form">
       <div class="form-group">
         <textarea class="form-control" formControlName="comment" placeholder="Comenta"></textarea>
       </div>

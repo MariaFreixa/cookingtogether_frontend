@@ -34,6 +34,21 @@
     cursor: pointer;
 }
 
+.custom-form button:hover {
+    border: 0.1rem solid grey;
+    background-color: #FFAA7A;
+}
+
+.custom-form button:focus {
+    border: 0.1rem solid grey;
+    background-color: #FFAA7A;
+}
+
+.custom-form button:active {
+    border: 0.1rem solid grey;
+    background-color: #FFAA7A;
+}
+
 .recetas {
     display: flex;
     justify-content: center;
@@ -86,11 +101,31 @@ a {
 }
 
 @media screen and (max-width: 500px) {
-    .container {
-        margin: 0 auto;
-      }
+    .searchContainer {
+        width: 95%;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
     .custom-form {
-        min-width: 325px;
+        min-width: 300px;
         padding: 3rem 3rem;
+    }
+
+    .recetas {
+        display: block;
+        justify-content: center;
+    }
+
+    mat-card {
+        margin-bottom: 10px;
+    }
+
+    mat-card img {
+        text-align: center;
+        height: 250px;
+        width: 300px;
+        margin-left: 40px;
+        border-radius: 0.5rem;
     }
 }

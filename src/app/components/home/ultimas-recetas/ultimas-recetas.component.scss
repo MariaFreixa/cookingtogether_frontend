@@ -61,3 +61,31 @@ a {
     text-align: center;
     margin-left: 120px;
 }
+
+@media screen and (max-width: 500px) {
+    .container {
+        margin: 0 auto;
+    }
+
+    .recetas {
+        display: block;
+        justify-content: center;
+    }
+
+    .title {
+        font-weight: bold; 
+        font-size: 35px; 
+    }
+
+    mat-card {
+        margin-bottom: 10px;
+    }
+
+    mat-card img {
+        text-align: center;
+        height: 250px;
+        width: 300px;
+        margin-left: 40px;
+        border-radius: 0.5rem;
+    }
+}
