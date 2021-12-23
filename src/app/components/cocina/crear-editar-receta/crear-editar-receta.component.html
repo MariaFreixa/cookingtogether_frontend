@@ -55,11 +55,9 @@
         </div>
         <div class="form-group">
             <div class="formulario" formArrayName="ingredients">
-                <div *ngFor="let ingredientCtrl of recipeForm.get('ingredients')?.controls; let i = index" [formGroupName]="i">
+                <div class="steps" *ngFor="let ingredientCtrl of recipeForm.get('ingredients')?.controls; let i = index" [formGroupName]="i">
                     <input type="text" class="form-control" formControlName="ingredient"  placeholder="Ingrediente">
-                    <button mat-fab type="button" (click)="onDeleteIngredient(i)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
+                    <mat-icon (click)="onDeleteIngredient(i)">delete</mat-icon>
                 </div>
                 <div>
                     <button type="button" (click)="onAddIngredient()">Añadir ingrediente</button>
@@ -68,11 +66,9 @@
         </div>
         <div class="form-group">
             <div class="formulario" formArrayName="steps">
-                <div *ngFor="let stepsCtrl of recipeForm.get('steps')?.controls; let i = index" [formGroupName]="i">
-                    <textarea class="form-control" formControlName="step" placeholder="Describe el paso {{i}}"></textarea>
-                    <button mat-fab type="button" (click)="onDeleteStep(i)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
+                <div class="steps" *ngFor="let stepsCtrl of recipeForm.get('steps')?.controls; let i = index" [formGroupName]="i">
+                    <textarea class="form-control" formControlName="step" placeholder="Describe el paso {{i + 1}}"></textarea>
+                    <mat-icon (click)="onDeleteStep(i)">delete</mat-icon>
                 </div>
                 <div>
                     <button type="button" (click)="onAddStep()">Añadir paso

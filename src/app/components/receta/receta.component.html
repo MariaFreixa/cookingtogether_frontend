@@ -25,9 +25,13 @@
   </div>
   <div class="steps">
     <h1>Procedimiento</h1>
-    <ul>
+    <ol>
       <li *ngFor="let element of steps">{{element.step}}</li>
-    </ul>
+    </ol>
+  </div>
+  <div>
+    <h1>Video explicativo</h1>
+    <iframe title="recipeVideo" width="560" height="315" [src]="recipe.safeVideo" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
   <h1>Comentarios</h1>
   <form class="custom-form" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
@@ -57,7 +61,7 @@
     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="3" [boundaryLinks]="true"
       [pageSize]="pageSize" class="d-flex justify-content-center">
   </ngb-pagination>
-    <div>
+    <div *ngIf='isSignedIn'>
       <div class="form-group">
         <textarea class="form-control" formControlName="comment" placeholder="Comenta"></textarea>
       </div>

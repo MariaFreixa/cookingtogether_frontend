@@ -73,6 +73,10 @@ export class RecetaComponent implements OnInit {
         let objectURL = 'data:image/jpeg;base64,' + recipeInfo.main_image;
         recipeInfo.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
 
+        recipeInfo.video = recipeInfo.video.replace("watch?v=", "embed/"); 
+
+        recipeInfo.safeVideo = this.sanitizer.bypassSecurityTrustResourceUrl(recipeInfo.video);
+
         this.recipeService.getRatings(params['id']).subscribe((rating) => {
           recipeInfo.rating = rating;
         });
@@ -131,10 +135,10 @@ export class RecetaComponent implements OnInit {
   }
 
   onSubmit() {
-    let comment = {comment: this.commentForm.value.comment, idRecipe: this.recipe.id}
+    let comment = {comment: this.commentForm.value.comment, id: this.recipe.id}
     this.recipeService.setComment(comment).subscribe(
       result => {
-        console.log(result);
+        this.actualizarComentarios();
       },
       error => {
         this.errors = error.error;
@@ -147,5 +151,12 @@ export class RecetaComponent implements OnInit {
   //To prevent memory leak
   ngOnDestroy(): void {
     if (this.subscription) this.subscription.unsubscribe();
+  }
+
+  actualizarComentarios() {
+    this.commentService.getCommentsByRecipeId(this.recipe.id).subscribe((response) => {
+      this.comments = response;
+      this.collectionSize = response.length;
+    });
   }
 }

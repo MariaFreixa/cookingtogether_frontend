@@ -44,6 +44,17 @@
     outline: none;
 }
 
+.steps {
+    display: flex;
+    align-items: center;
+}
+
+mat-icon {
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 0;
+}
+
 @media screen and (max-width: 500px) {
     .container {
         margin: 0 auto;
