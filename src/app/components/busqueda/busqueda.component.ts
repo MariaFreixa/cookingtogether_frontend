@@ -69,7 +69,6 @@ export class BusquedaComponent implements OnInit {
     }
 
     this.recipeService.searchRecipe(this.filterSearchForm.value).subscribe(response => {
-      console.log(response);
       response.forEach(recipe => {
         let objectURL = 'data:image/jpeg;base64,' + recipe.main_image;
         recipe.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);

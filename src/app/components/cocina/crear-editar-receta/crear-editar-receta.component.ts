@@ -141,7 +141,6 @@ export class CrearEditarRecetaComponent implements OnInit {
     recipe.append('video', this.recipeForm.value.video);
     recipe.append('id_category', this.recipeForm.value.id_category);
     recipe.append('id_complexity', this.recipeForm.value.id_complexity);
-    console.log(this.recipeForm.value.ingredients);
 
     this.recipeForm.value.ingredients.forEach((ingredient, i) => {
       if(ingredient.ingredient != null && ingredient.ingredient != "") {
@@ -175,7 +174,6 @@ export class CrearEditarRecetaComponent implements OnInit {
           console.log(result)
         },
         error => {
-          console.log("error: ", error);
           this.errors = error.error;
         },
         () => {

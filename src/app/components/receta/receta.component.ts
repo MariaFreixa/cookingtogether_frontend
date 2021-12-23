@@ -61,7 +61,6 @@ export class RecetaComponent implements OnInit {
       this.commentService.getCommentsByRecipeId(params['id']).subscribe((response) => {
         this.comments = response;
         this.collectionSize = response.length;
-        console.log(response);
       });
       this.recipeService.getFullRecipeById(params['id']).subscribe((response) => {
         ingredientsInfo = response['ingredients'];
@@ -95,7 +94,6 @@ export class RecetaComponent implements OnInit {
         
         if(this.isSignedIn) {
           this.recipeService.getFav().subscribe((recipesFav) => {
-            console.log(recipesFav);
             recipesFav.forEach((recipeFav) => {
               if(recipeInfo.id == recipeFav.id) {
                 recipeInfo.userFavorite = true;
@@ -107,10 +105,6 @@ export class RecetaComponent implements OnInit {
         this.recipe = recipeInfo;
         this.ingredients = ingredientsInfo;
         this.steps = stepsInfo;
-
-        console.log(this.recipe);
-        console.log(this.ingredients);
-        console.log(this.steps);
       });
     });
   }

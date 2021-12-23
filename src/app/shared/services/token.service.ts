@@ -17,7 +17,6 @@ export class TokenService {
   constructor() { }
 
   handleData(data){
-    console.log("dentro de handleData: ", data);
     localStorage.setItem('auth_token', data.access_token);
     localStorage.setItem('user', JSON.stringify(data.user));
   }
